@@ -1,34 +1,25 @@
 class Solution {
-    public void rotation(int[][]mat)
+    public int[][] rotation(int[][]mat)
     {
-       int temp,n=mat.length;
-     
-        //transpose of a matrix without using any extra space
-        for(int i=0;i<n;i++)
-        for(int j=0;j<i;j++)
-        {
-          temp = mat[i][j];
-          mat[i][j] = mat[j][i];
-          mat[j][i] = temp;
-         }
-        
-        //swap rows of transpose mat to get final answer
-         for(int i=0;i<n; i++)
-            //2nd catch is j will go halfoflength
-            for(int j=0;j<mat[0].length/2;j++)
+        int n=mat.length;
+         int rotmat[][]=new int[n][n];
+        for(int i=0,k=n-1; i<n; i++,k--)
+            for(int j=0; j<n; j++)
             {
-                temp =0;
-                temp = mat[i][j];
-                mat[i][j]=mat[i][n-1-j];
-                mat[i][n-1-j]=temp;
+                rotmat[j][k]=mat[i][j];
             }
+        
+        return rotmat;
     }
     
     public boolean findRotation(int[][] mat, int[][] target) {
-        for(int i=0; i<4; i++)
+        int rotmat[][]=rotation(mat);
+        if(java.util.Arrays.deepEquals(rotmat,target))
+            return true;
+        for(int i=0; i<3; i++)
         {
-            rotation(mat);
-            if(java.util.Arrays.deepEquals(mat,target))
+            rotmat=rotation(rotmat);
+            if(java.util.Arrays.deepEquals(rotmat,target))
                 return true;
         }
         return false;
