@@ -5,13 +5,13 @@ class Solution {
        int n=s.length();
        for(int i=0; i<n; i++)
        {
-           boolean arr[]=new boolean[256];
+           boolean arr[]=new boolean[256];    //including all the Ascii charaters and by defalut marked as false intially
            for(int j=i; j<n; j++)
            {
-               if(arr[s.charAt(j)]==true)
+               if(arr[s.charAt(j)]==true)     // if already true means that charater is visited so break the loop.
                    break;
                else{
-                   ans=Math.max(ans,j-i+1);
+                   ans=Math.max(ans,j-i+1);   // if the char is not already visited then marked it true and update the count of longest character(ans).
                    arr[s.charAt(j)]=true;
                }
            }
