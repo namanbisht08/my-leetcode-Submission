@@ -1,6 +1,35 @@
 class Solution {
    public int lengthOfLongestSubstring(String s)
    {
+     String longSubStrTillNow="";
+     int maxLength=-1;
+     if(s.isEmpty())
+         return 0;
+     if(s.length()==1)
+         return 1;
+     
+     for(char ch : s.toCharArray())
+     {
+         String current = String.valueOf(ch);
+         if(longSubStrTillNow.contains(current))
+             longSubStrTillNow=longSubStrTillNow.substring(longSubStrTillNow.indexOf(current)+1); 
+        longSubStrTillNow=longSubStrTillNow+String.valueOf(ch);  
+        maxLength=Math.max(longSubStrTillNow.length(),maxLength);
+     }
+    return maxLength;
+   }
+}
+
+
+
+
+
+
+/*
+O(n^2) solution
+class Solution {
+   public int lengthOfLongestSubstring(String s)
+   {
        int ans=0;
        int n=s.length();
        for(int i=0; i<n; i++)
@@ -21,39 +50,39 @@ class Solution {
    }
 }
 
+*/
 
 
-
-
-
-
-// class Solution {
-//    public boolean isDistinct(String str, int i, int j)
-//    {
-//        boolean arr[]=new boolean[26];
+// for counting the largest substring with no repeating character (only Alphabet)
+//O(n^3) solution
+/*
+class Solution {
+   public boolean isDistinct(String str, int i, int j)
+   {
+       boolean arr[]=new boolean[26];    //only including alphabet thats why array of size 26.
        
-//        for(int k=i; k<=j; k++)
-//        {
-//            if(arr[str.charAt(k)-'a']==true)
-//                return false;
-//            arr[str.charAt(k)-'a']=true;
-//        }
-//        return true;
-//    }
+       for(int k=i; k<=j; k++)
+       {
+           if(arr[str.charAt(k)-'a']==true)
+               return false;
+           arr[str.charAt(k)-'a']=true;
+       }
+       return true;
+   }
     
-//     public int lengthOfLongestSubstring(String s) {
-//         int res=0;
-//         for(int i=0; i<s.length(); i++)
-//             for(int j=i; j<s.length(); j++)
-//             {
-//                 if(isDistinct(s,i,j))
-//                    res=Math.max(res,j-i+1); 
-//             }
-//      return res;
-//     }
-// }
+    public int lengthOfLongestSubstring(String s) {
+        int res=0;
+        for(int i=0; i<s.length(); i++)
+            for(int j=i; j<s.length(); j++)
+            {
+                if(isDistinct(s,i,j))
+                   res=Math.max(res,j-i+1); 
+            }
+     return res;
+    }
+}
 
-
+*/
 
 
 
