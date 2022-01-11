@@ -30,7 +30,7 @@ class Solution {
         }
         
         int start = product[0] != 0 ? 0 : 1;
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         for (int i = start; i < len; i++) {
             result.append(product[i]);
         }
