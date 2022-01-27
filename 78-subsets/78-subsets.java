@@ -14,10 +14,10 @@ class Solution {
         }
         
         ds.add(arr[i]);
-        fun(i+1,arr,l,ds);
+        fun(i+1,arr,l,ds);  //pick
         
         ds.remove(ds.size()-1);
-        fun(i+1,arr,l,ds);
+        fun(i+1,arr,l,ds);  //not pick
     }
     
 }
