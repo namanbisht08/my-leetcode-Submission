@@ -1,18 +1,28 @@
-// class Solution {
-//     public List<List<Integer>> subsetsWithDup(int[] arr) {
-//         List<List<Integer>> l = new ArrayList<>();
-//         Arrays.sort(arr);
-//         fun(0, arr, l, new ArrayList<Integer>());
-//         return l;
-//     }
+//Optimized approach.
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] arr) {
+        List<List<Integer>> l = new ArrayList<>();
+        Arrays.sort(arr);   //sort arr so that we get all the duplicate elements on adjacent [1,1,1,2,2,3,4,5,5,]
+        fun(0, arr, l, new ArrayList<Integer>());
+        return l;
+    }
     
-//     fun(int i, int[] arr, List<List<Integer>> l, List<Integer> ds)
-//     {
-//         if(i==arr.length)
-//     }
-// }
+    void fun(int ind, int[] arr, List<List<Integer>> l, List<Integer> ds)
+    {
+        l.add(new ArrayList<>(ds));  //append list in list of list on each level {level no. = size of list}
+        
+        for(int i=ind; i<arr.length; i++)
+        {
+            if(i!=ind && arr[i]==arr[i-1]) continue;    //ignore if it is the first element, else do not append on list if it is duplicate.
+            ds.add(arr[i]);
+            fun(i+1, arr, l, ds);   //recursively call fun to append next index's element.
+            ds.remove(ds.size()-1);
+        }
+    }
+    
+}
 
-
+/*
 //Brute force approach
 
 class Solution {
@@ -40,3 +50,4 @@ class Solution {
         fun(i+1, arr, s, ds);
     }
 }
+*/
