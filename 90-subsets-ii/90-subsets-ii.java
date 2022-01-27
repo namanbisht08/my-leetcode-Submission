@@ -1,3 +1,18 @@
+// class Solution {
+//     public List<List<Integer>> subsetsWithDup(int[] arr) {
+//         List<List<Integer>> l = new ArrayList<>();
+//         Arrays.sort(arr);
+//         fun(0, arr, l, new ArrayList<Integer>());
+//         return l;
+//     }
+    
+//     fun(int i, int[] arr, List<List<Integer>> l, List<Integer> ds)
+//     {
+//         if(i==arr.length)
+//     }
+// }
+
+
 //Brute force approach
 
 class Solution {
