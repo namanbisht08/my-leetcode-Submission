@@ -15,46 +15,26 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-      List<List<Integer>> l = new ArrayList();
-      List<Integer> sl = new ArrayList();
-      Queue<TreeNode> q = new LinkedList();
-      boolean rightToLeft=false;
-      
-      q.add(root);
-      while(!q.isEmpty())
-      {
-        sl.clear();
-        int s=q.size();
-        while(s--!=0)
-        {
-          TreeNode temp=q.poll();
-          if(temp!=null)
-          {
-            sl.add(temp.val);
-            q.add(temp.left);
-            q.add(temp.right);
-          }
-          
-        }
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
         
-        if(rightToLeft)
-        {
-          if(sl.size()>0)
-          {
-            Collections.reverse(sl);
-            l.add(new ArrayList(sl));
-            rightToLeft=!rightToLeft;
-          }
+        if(root == null) return wrapList;
+        
+        queue.offer(root);
+        boolean flag = true; 
+        while(!queue.isEmpty()){
+            int levelNum = queue.size();
+            List<Integer> subList = new ArrayList<Integer>(levelNum);
+            for(int i=0; i<levelNum; i++) {
+                int index = i;
+                if(queue.peek().left != null) queue.offer(queue.peek().left);
+                if(queue.peek().right != null) queue.offer(queue.peek().right);
+                if(flag == true) subList.add(queue.poll().val);
+                else subList.add(0, queue.poll().val);
+            }
+            flag = !flag; 
+            wrapList.add(subList);
         }
-        else
-        {
-          if(sl.size()>0)
-          {
-           l.add(new ArrayList(sl));
-         rightToLeft=!rightToLeft;  
-          }
-        }
-      }
-      return l;
+        return wrapList;
     }
 }
