@@ -21,8 +21,7 @@
 class Solution{
   public int singleNumber(int[] nums){
     int ans=0;
-    int size=nums.length;
-    for(int i=0; i<size; i++)
+    for(int i=0; i<nums.length; i++)
       ans^=nums[i];
     return ans;
   }
