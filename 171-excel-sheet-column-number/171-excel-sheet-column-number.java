@@ -9,3 +9,9 @@ class Solution {
       return sum;
     }
 }
+
+/*
+"B" = 2
+"BC" = (2)26 + 3
+"BCM" = (2(26) + 3)26 + 13
+*/
