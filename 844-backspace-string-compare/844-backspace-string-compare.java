@@ -5,23 +5,15 @@ class Solution {
     {
       Stack<String> stack = new Stack<String>();
       for(String s : arr)
-      {
         if(s.equals("#"))
           if(!stack.empty())
            stack.pop();
           else
             continue;
-        else
+         else
           stack.add(s);
-      }
       
-      String s="";
-	    while(!stack.empty())
-	    {
-	        s+=stack.pop();
-	    }
-      System.out.println(s);
-      return s;
+      return String.valueOf(stack);
     }
   
     public boolean backspaceCompare(String s, String t) {
