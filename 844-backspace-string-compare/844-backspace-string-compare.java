@@ -5,13 +5,12 @@ class Solution {
     {
       Stack<String> stack = new Stack<String>();
       for(String s : str.split(""))
-        if(s.equals("#"))
+        if(!s.equals("#"))
+          stack.add(s);
+        else
           if(!stack.empty())
            stack.pop();
-          else
-            continue;
-         else
-          stack.add(s);
+          
       
       return String.valueOf(stack);
     }
