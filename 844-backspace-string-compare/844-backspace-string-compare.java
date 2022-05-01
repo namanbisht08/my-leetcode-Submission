@@ -1,10 +1,10 @@
 import java.util.*;
 class Solution {
   
-    String backspace(String arr[])
+    String backspace(String str)
     {
       Stack<String> stack = new Stack<String>();
-      for(String s : arr)
+      for(String s : str.split(""))
         if(s.equals("#"))
           if(!stack.empty())
            stack.pop();
@@ -17,6 +17,6 @@ class Solution {
     }
   
     public boolean backspaceCompare(String s, String t) {
-        return backspace(s.split("")).equals(backspace(t.split("")));
+        return backspace(s).equals(backspace(t));
     }
 }
