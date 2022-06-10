@@ -1,6 +1,6 @@
 class Solution {
     public int removePalindromeSub(String s) {
-        //if(isPalindrome(s)) return 1;   //O(1) space complexity
+      if(isPalindrome(s)) return 1;   //O(1) space complexity
       if(s.equals(new StringBuilder(s).reverse().toString())) return 1;  //O(n) space complexity
       return 2;
     }
