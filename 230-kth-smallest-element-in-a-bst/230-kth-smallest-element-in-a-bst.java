@@ -18,6 +18,7 @@
 
 
 // #################### {COME BACK AGAIN} TC O(n) SC O(n)* ####################
+// can be improved using morris traversal of BST
 
 class Solution {
     void inOrder(TreeNode root, ArrayList<Integer> arr)
