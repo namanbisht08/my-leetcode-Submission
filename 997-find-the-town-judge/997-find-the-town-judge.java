@@ -1,37 +1,18 @@
 class Solution {
-  
-  public boolean visitedByEveryone(HashMap<Integer,ArrayList<Integer>> hs, int n)
-  {
-    for(int i=1; i<=hs.size(); i++)
-    {
-      if(i==n) continue;
-      if(!hs.get(i).contains(n))
-        return false;
-    }
-    return true;
-  }
-  
-  public boolean visitingNoOne(HashMap<Integer,ArrayList<Integer>> hs, int n)
-  {
-    return hs.get(n).size()==0 || hs.get(n)==null; 
-  }
-  
     public int findJudge(int n, int[][] trust) {
-      HashMap<Integer,ArrayList<Integer>> hs = new HashMap<>();
-      for(int i=1; i<=n; i++)
-        hs.put(i,new ArrayList<>());
+      
+      int inDgr[] = new int[n+1];
+      int outDgr[] = new int[n+1];
       
       for(int[] arr : trust)
       {
-        int u=arr[0], v=arr[1];
-        hs.get(u).add(v);
+        outDgr[arr[0]]++;
+        inDgr[arr[1]]++;
       }
       
       for(int i=1; i<=n; i++)
-      {
-        if(visitedByEveryone(hs,i) && visitingNoOne(hs,i))
+        if(outDgr[i]==0 && inDgr[i]==n-1)
           return i;
-      }
       
       return -1;
     }
